@@ -1,0 +1,46 @@
+<%= form_for @post do |f| %>
+  <% if post.errors.any? %>
+    <div>
+      <div style="color: red">
+        <h2>
+          Please fix the below list of errors to proceed further
+        </h2>
+      </div>
+      <ul>
+        <% post.errors.each do | attr, msg | %>
+          <% if post.errors[attr].first == msg %>
+            <li> <%= "#{msg}" %> </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table>
+    <tr>
+      <td><%= f.label :title %></td>
+      <td><%= f.text_field :title, size: 50 %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :content %></td>
+      <td><%= f.text_area :content, rows: 20, cols: 43 %></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="pd-tp-10">
+          <% if @post == nil || @post.id == nil %>
+            <%= link_to "Back", posts_path %>
+          <% else %>
+            <%= link_to "Back", post_path(@post) %>
+          <% end %>
+        </div>
+      </td>
+      <td>
+        <div class="flt-rgt pd-tp-10">
+          <%= f.hidden_field :id %>
+          <%= f.hidden_field :user_id, value: session[:user_id] %>
+          <%= f.submit %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>

@@ -1,0 +1,37 @@
+<div>
+  <h1>Post details</h1>
+  <% if notice != nil %>
+    <div style="color: green">
+      <%= notice %>
+    </div>
+  <% end %>
+  <p>Please find the post details below</p>
+  <div class="pd-tp-10">
+    <table class="edt-pst-tb">
+      <tbody>
+      <tr>
+        <td style="font-weight: bold">Title: </td>
+        <td class="pd-lft-30"><%= @post.title %></td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold">Content: </td>
+        <td class="pd-lft-30"><%= @post.content %></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="pd-tp-10">
+            <%= link_to "Back", posts_path %>
+          </div>
+        </td>
+        <td>
+          <div class="pd-tp-10 flt-rgt">
+            <% if @post.user_id == session[:user_id] %>
+              <%= link_to "Edit post", edit_post_path(@post) %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

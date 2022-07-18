@@ -1,0 +1,40 @@
+<div>
+  <% if @users != nil && @users.any? %>
+    <h1>List of users</h1>
+    <% if notice != nil %>
+      <div style="color: green">
+        <%= notice %>
+      </div>
+    <% end %>
+    <div class="pd-tp-10">
+      <table class="tb-brder">
+        <thead>
+          <tr>
+            <th class="tb-brder">First name</th>
+            <th class="tb-brder">Last name</th>
+            <th class="tb-brder">Email</th>
+            <th class="tb-brder" colspan="1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td class="tb-brder"><%= user.first_name %></td>
+            <td class="tb-brder"><%= user.last_name %></td>
+            <td class="tb-brder"><%= user.email %></td>
+            <td class="tb-brder">
+              <%= link_to "Show user", user_path(user) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    No user present in the system
+  <% end %>
+
+  <br>
+
+  <%= link_to "Create user", new_user_path %>
+</div>
