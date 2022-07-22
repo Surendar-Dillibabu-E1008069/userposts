@@ -53,9 +53,10 @@
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v1.25.1, rbenv: 2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.15.0, rbenv: 2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.5, rbenv: 2.3.7) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="power_assert (v0.2.6, rbenv: 2.3.7) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="power_assert (v2.0.1, rbenv: 2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v1.4.7, rbenv: 2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-cache (v1.13.0, rbenv: 2.3.7) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack-cors (v0.4.1, rbenv: 2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-ssl (v1.3.4, rbenv: 2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.3, rbenv: 2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails (v3.2.22.5, rbenv: 2.3.7) [gem]" level="application" />
@@ -69,7 +70,7 @@
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v3.2.6, rbenv: 2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v2.2.3, rbenv: 2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.13, rbenv: 2.3.7) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="test-unit (v3.1.5, rbenv: 2.3.7) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="test-unit (v3.5.3, rbenv: 2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.2.1, rbenv: 2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v1.4.1, rbenv: 2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.15, rbenv: 2.3.7) [gem]" level="application" />

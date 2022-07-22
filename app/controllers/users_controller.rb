@@ -15,6 +15,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html { render :'users/show' }
+      format.json { render json: @user }
+    end
   end
 
   def edit
@@ -23,11 +27,26 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.save
-      redirect_to new_user_path, notice: "User was successfully created. Please login through nav-bar menu"
+    existingUser = User.find_by_email(@user.email);
+    if existingUser
+      respond_to do |format|
+        format.html { render :new }
+        format.json { render json: { "errMsg": "Given email already present in our system. Please try with different email" } }
+      end
     else
-      render :new
+      if @user.save
+        respond_to do |format|
+          format.html { redirect_to new_user_path, notice: "User was successfully created. Please login through nav-bar" }
+          format.json { render json: { "succMsg": "User was successfully created. Please login through nav-bar" } }
+        end
+      else
+        respond_to do |format|
+          format.html { render :new }
+          format.json { render json: { "errMsg": "User creation failed. Please try later" } }
+        end
+      end
     end
+
   end
 
   def update
@@ -37,16 +56,23 @@ class UsersController < ApplicationController
                                      :password => params[:user][:password],
                                      :password_confirmation => params[:user][:password_confirmation])
     if result
-      redirect_to @user, notice: "User was successfully updated"
+      respond_to do |format|
+        format.html { redirect_to @user, notice: "User was successfully updated" }
+        format.json { render json: { "succMsg": "User was successfully updated." } }
+      end
     else
-      render  :edit, status:  :unprocessable_entity
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: { "errMsg": "User updation failed. Please try later" } }
+      end
     end
   end
 
   private
   def access_validation
     user_id = params[:id]
-    if user_id.to_i != session[:user_id]
+    if request.format.json?
+    elsif user_id.to_i != session[:user_id]
       redirect_to access_denied_path
     end
   end

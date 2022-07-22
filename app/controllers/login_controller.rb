@@ -17,11 +17,14 @@ class LoginController < ApplicationController
         if @user != nil && @user.password == @password
           session[:user_id] = @user.id
           format.html { redirect_to "/home" }
+          format.json { render json: { "succMsg": "Login success", "userId": @user.id, "firstName": @user.first_name } }
         else
           format.html { redirect_to login_path, notice: "Please check your email or password" }
+          format.json { render json: { "errMsg": "Please check your email or password" } }
         end
       else
         format.html { redirect_to login_path, notice: "Please provide the email and password" }
+        format.json { render json: { "errMsg": "Please provide the email and password" } }
       end
     end
   end
