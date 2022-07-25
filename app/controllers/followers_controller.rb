@@ -2,7 +2,6 @@ class FollowersController < ApplicationController
   before_filter :set_user_id, only: %i[ follow unfollow ]
 
   def follow
-    puts "follow userId : #{@userId}"
     @follower = Follower.new(:user_id => @userId,
                              :follower_user_id => params[:follower_user_id])
     @follower_user = User.find(@follower.follower_user_id)
@@ -20,7 +19,6 @@ class FollowersController < ApplicationController
   end
 
   def unfollow
-    puts "unfollow userId : #{@userId}"
     @follower_user = User.find(params[:follower_user_id])
     result = Follower.unfollow_user(params[:follower_user_id], @userId)
     if result

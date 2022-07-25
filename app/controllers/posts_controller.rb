@@ -51,16 +51,25 @@ class PostsController < ApplicationController
   end
 
   def edit
-    post_id_list = Post.post_id_list_by_user(session[:user_id])
+    user_id = session[:user_id]
+    if user_id == nil
+      user_id = params[:userId];
+    end
+    post_id_list = Post.post_id_list_by_user(user_id)
     if post_id_list.include?params[:id].to_i
-      puts "Post present"
+      respond_to do |format|
+        format.html { render :'posts/edit' }
+        format.json { render json: @post }
+      end
     else
-      redirect_to access_denied_path
+      respond_to do |format|
+        format.html { redirect_to access_denied_path }
+        format.json { render json: { "errMsg": "access_denied" } }
+      end
     end
   end
 
   def update
-    puts "update #{@post}"
     result = @post.update_attributes(:title => params[:post][:title],
                                      :content => params[:post][:content],
                                      :user_id => params[:post][:user_id])

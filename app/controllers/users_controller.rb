@@ -23,6 +23,10 @@ class UsersController < ApplicationController
 
   def edit
     @user.password_confirmation = @user.password
+    respond_to do |format|
+      format.html { render :'users/edit' }
+      format.json { render json: @user }
+    end
   end
 
   def create
